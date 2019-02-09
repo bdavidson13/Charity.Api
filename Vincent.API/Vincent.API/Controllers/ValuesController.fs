@@ -4,6 +4,8 @@ open System
 open System.Collections.Generic
 open System.Linq
 open System.Threading.Tasks
+open EFCore.Model
+open CompostionRoot
 open Microsoft.AspNetCore.Mvc
 
 [<Route("api/[controller]")>]
@@ -19,6 +21,8 @@ type ValuesController () =
     [<HttpGet("{id}")>]
     member this.Get(id:int) =
         let value = "value"
+        let newUser = {id=1; username = "CMDUser"; email = "user@fSharp.com"; password = "test"; createdate = DateTime.Now}
+        addUserAccount newUser
         ActionResult<string>(value)
 
     [<HttpPost>]

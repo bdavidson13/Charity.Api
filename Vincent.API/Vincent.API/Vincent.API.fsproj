@@ -1,10 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Entities.fs" />
+    <Compile Include="CharityContext.fs" />
+    <Compile Include="UserAccountsRepository.fs" />
+    <Compile Include="CompositionRoot.fs" />
     <Compile Include="Controllers/ValuesController.fs" />
     <Compile Include="Startup.fs" />
     <Compile Include="Program.fs" />
@@ -12,6 +16,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL">
+      <Version>2.1.1</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
