@@ -21,13 +21,15 @@ type ValuesController () =
     [<HttpGet("{id}")>]
     member this.Get(id:int) =
         let value = "value"
-        let newUser = {id=1; username = "CMDUser"; email = "user@fSharp.com"; password = "test"; createdate = DateTime.Now}
-        addUserAccount newUser
+        //let newUser = {id=1; username = "CMDUser"; email = "user@fSharp.com"; password = "test"; createdate = DateTime.Now}
+        //addUserAccount newUser
         ActionResult<string>(value)
 
     [<HttpPost>]
-    member this.Post([<FromBody>] value:string) =
-        ()
+    [<Route("api/values/test")>]
+    member this.Post([<FromBody>] user:UserAccount) =
+        addUserAccount user
+        ActionResult<string>("success")
 
     [<HttpPut("{id}")>]
     member this.Put(id:int, [<FromBody>] value:string ) =
