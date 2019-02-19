@@ -16,6 +16,8 @@ type UsersController () =
 
     [<HttpGet>]
     member this.Get() = 
+        let newUser = { username = "CMDUser"; email = "user@fSharp.com"; password = "test"; createdate = DateTime.Now}
+        addUserAccount newUser
         ActionResult<string>("Successfully go to users controller")
 
     [<HttpGet("{id}")>]
