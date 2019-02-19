@@ -20,6 +20,13 @@ module UserAccountsRepository =
             let! _ = context.SaveChangesAsync true |> Async.AwaitTask
             return entity
         }    
+    
+    let getNewUserId (context:CharityContext) =
+        query {
+            for userAccount in context.UserAccount do
+                select userAccount
+                count
+        }|>(fun x -> if box x = null then 1 else (x + 1))
 
     let addUserAccount (context: CharityContext) (entity: UserAccount) =
         context.UserAccount.Add(entity) |> ignore

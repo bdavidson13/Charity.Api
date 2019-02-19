@@ -29,7 +29,17 @@ type UsersController () =
     [<HttpPost>]
     member this.Post([<FromBody>] user:UserAccount) =
         //let newUser = {id=1; username = "CMDUser"; email = "user@fSharp.com"; password = "test"; createdate = DateTime.Now}
-        addUserAccount user
+        let newId:int = getNextUserId
+        let newUser = {
+            id = newId; 
+            username = user.email;
+            firstname = user.firstname;
+            lastname = user.lastname;
+            email = user.email;
+            password = user.password;
+            createdate = DateTime.Now
+        }
+        addUserAccount newUser
         ActionResult<string>("success")
     
     [<HttpPut("{id}")>]

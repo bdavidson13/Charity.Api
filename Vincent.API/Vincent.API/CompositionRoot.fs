@@ -13,6 +13,7 @@ let configurePostgresServerContext =
 let getContext = configurePostgresServerContext()
 let getUserAccount  = UserAccountsRepository.getUserAccount getContext
 let addUserAccount = UserAccountsRepository.addUserAccount getContext
+let getNextUserId = UserAccountsRepository.getNewUserId getContext
 let addUserAccountAsync = UserAccountsRepository.addUserAccountAsync getContext
 let updateUserAccount = UserAccountsRepository.updateUserAccount getContext
 let deleteUserAccount = UserAccountsRepository.deleteUserAccount getContext
